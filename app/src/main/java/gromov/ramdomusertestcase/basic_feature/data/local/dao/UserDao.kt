@@ -9,7 +9,6 @@ import gromov.ramdomusertestcase.basic_feature.data.local.entity.UserDbModel
 
 @Dao
 interface UserDao {
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(users: List<UserDbModel>)
 
@@ -17,6 +16,6 @@ interface UserDao {
     fun getSavedUsers(): PagingSource<Int, UserDbModel>
 
     @Query("SELECT * FROM user_table WHERE id = :id")
-    suspend fun getUser(id: String)
+    suspend fun getUser(id: String): UserDbModel
 
 }

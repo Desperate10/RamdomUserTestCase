@@ -9,7 +9,8 @@ import gromov.ramdomusertestcase.basic_feature.data.local.entity.UserRemoteKeys
 
 @Database(
     entities = [UserDbModel::class, UserRemoteKeys::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 
