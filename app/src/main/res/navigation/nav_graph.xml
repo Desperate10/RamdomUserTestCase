@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/usersFragment"
-        android:name="gromov.ramdomusertestcase.basic_feature.presentation.users.UsersFragment"
+        android:name="gromov.ramdomusertestcase.basic_feature.presentation.screens.users.UsersFragment"
         android:label="fragment_users"
         tools:layout="@layout/fragment_users" >
         <action
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
-        android:name="gromov.ramdomusertestcase.basic_feature.presentation.history.HistoryFragment"
+        android:name="gromov.ramdomusertestcase.basic_feature.presentation.screens.history.HistoryFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" >
         <action
@@ -27,11 +27,11 @@
     </fragment>
     <fragment
         android:id="@+id/userDetailFragment"
-        android:name="gromov.ramdomusertestcase.basic_feature.presentation.user_detail.UserDetailFragment"
+        android:name="gromov.ramdomusertestcase.basic_feature.presentation.screens.user_detail.UserDetailFragment"
         android:label="fragment_user_detail"
         tools:layout="@layout/fragment_user_detail" >
         <argument
-            android:name="id"
-            app:argType="string" />
+            android:name="position"
+            app:argType="integer" />
     </fragment>
 </navigation>

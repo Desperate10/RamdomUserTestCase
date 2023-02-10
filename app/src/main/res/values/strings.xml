@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RamdomUserTestCase</string>
+    <string name="user_adapter_user_picture_content_description">adapter content</string>
 </resources>

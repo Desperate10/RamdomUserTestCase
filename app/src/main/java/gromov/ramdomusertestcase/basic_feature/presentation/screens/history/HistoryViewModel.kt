@@ -1,4 +1,4 @@
-package gromov.ramdomusertestcase.basic_feature.presentation.history
+package gromov.ramdomusertestcase.basic_feature.presentation.screens.history
 
 import androidx.lifecycle.ViewModel
 
