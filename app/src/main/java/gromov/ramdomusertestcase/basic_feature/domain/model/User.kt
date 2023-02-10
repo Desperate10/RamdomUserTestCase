@@ -12,4 +12,6 @@ data class User(
     val picture: String,
     val city: String,
     val country: String
-)
+) {
+    constructor() : this("","","","","","","","")
+}

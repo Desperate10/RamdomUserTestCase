@@ -29,13 +29,13 @@ class RandomUsersAdapter : ListAdapter<User, RandomUserViewHolder>(RandomUserDif
             }
 
             root.setOnClickListener {
-                onRandomUserClickListener?.onClick(position)
+                onRandomUserClickListener?.onClick(user)
             }
         }
 
     }
 
     interface OnRandomUserClickListener {
-        fun onClick(position: Int)
+        fun onClick(user: User)
     }
 }

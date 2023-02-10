@@ -10,6 +10,6 @@ interface UserRepository {
 
     suspend fun getRandomUsers(): List<User>
 
-    suspend fun getUserDetails(id: String)
+    suspend fun getUserDetails(id: String) : User
 
 }
