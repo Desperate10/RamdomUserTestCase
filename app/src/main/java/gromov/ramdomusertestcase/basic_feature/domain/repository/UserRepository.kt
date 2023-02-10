@@ -7,7 +7,7 @@ interface UserRepository {
 
     fun getSavedUsers(): Flow<List<User>>
 
-    fun getRandomUsers(): Flow<List<User>>
+    suspend fun getRandomUsers(): List<User>
 
     suspend fun getUserDetails(id: String)
 

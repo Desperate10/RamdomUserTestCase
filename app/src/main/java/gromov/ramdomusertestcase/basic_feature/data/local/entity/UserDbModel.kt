@@ -7,8 +7,8 @@ import androidx.room.PrimaryKey
 data class UserDbModel(
     @PrimaryKey
     val id: String,
-    val firstName: String,
-    val secondName: String,
+    val name: String,
+    val surname: String,
     val email: String,
     val phone: String,
     val picture: String,

@@ -1,4 +1,4 @@
-package gromov.ramdomusertestcase.basic_feature.presentation.user_detail
+package gromov.ramdomusertestcase.basic_feature.presentation.screens.user_detail
 
 import androidx.lifecycle.ViewModel
 
