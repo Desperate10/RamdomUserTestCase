@@ -20,7 +20,7 @@ class RandomUsersAdapter : ListAdapter<User, RandomUserViewHolder>(RandomUserDif
     override fun onBindViewHolder(holder: RandomUserViewHolder, position: Int) {
         val user = getItem(position)
         with(holder.binding) {
-            tvName.text = user.name
+            tvName.text = user.name+ " "+ user.surname
             user.also {
                 Glide.with(ivUserPicture)
                     .load(it.picture)
