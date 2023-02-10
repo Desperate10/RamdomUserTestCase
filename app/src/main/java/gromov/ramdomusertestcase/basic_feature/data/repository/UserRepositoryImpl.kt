@@ -1,8 +1,12 @@
 package gromov.ramdomusertestcase.basic_feature.data.repository
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import gromov.ramdomusertestcase.app.database.AppDatabase
 import gromov.ramdomusertestcase.basic_feature.data.mapper.toDomainModel
 import gromov.ramdomusertestcase.basic_feature.data.mapper.toEntityModel
+import gromov.ramdomusertestcase.basic_feature.data.paging.UsersHistoryPagingSource
 import gromov.ramdomusertestcase.basic_feature.data.remote.api.UserApi
 import gromov.ramdomusertestcase.basic_feature.domain.model.User
 import gromov.ramdomusertestcase.basic_feature.domain.repository.UserRepository
@@ -14,8 +18,13 @@ class UserRepositoryImpl @Inject constructor(
     private val db: AppDatabase
 ) : UserRepository {
 
-    override fun getSavedUsers(): Flow<List<User>> {
-        TODO("Not yet implemented")
+    override fun getSavedUsers(): Flow<PagingData<User>> {
+        return Pager(
+            config = PagingConfig(pageSize = 20),
+            pagingSourceFactory = {
+                UsersHistoryPagingSource(db)
+            }
+        ).flow
     }
 
     override suspend fun getRandomUsers(): List<User> {
