@@ -9,7 +9,9 @@ import gromov.ramdomusertestcase.basic_feature.data.remote.api.UserApi
 import gromov.ramdomusertestcase.basic_feature.data.repository.UserRepositoryImpl
 import gromov.ramdomusertestcase.basic_feature.domain.repository.UserRepository
 import gromov.ramdomusertestcase.basic_feature.domain.usecase.GetRandomUsersUseCase
+import gromov.ramdomusertestcase.basic_feature.domain.usecase.GetUsersHistoryUseCase
 import gromov.ramdomusertestcase.basic_feature.domain.usecase.getRandomUsers
+import gromov.ramdomusertestcase.basic_feature.domain.usecase.getUsersHistory
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
@@ -31,6 +33,15 @@ object RandomUserModule {
     ): GetRandomUsersUseCase {
         return GetRandomUsersUseCase {
             getRandomUsers(userRepository)
+        }
+    }
+
+    @Provides
+    fun provideGetHistoryUserUseCase(
+        userRepository: UserRepository
+    ): GetUsersHistoryUseCase {
+        return GetUsersHistoryUseCase {
+            getUsersHistory(userRepository)
         }
     }
 
