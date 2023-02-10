@@ -32,13 +32,13 @@ class HistoryUsersAdapter : PagingDataAdapter<User, RandomUserViewHolder>(Random
             }
 
             root.setOnClickListener {
-                onRandomUserClickListener?.onClick(position)
+                user?.let { it1 -> onRandomUserClickListener?.onClick(it1) }
             }
         }
 
     }
 
     interface OnRandomUserClickListener {
-        fun onClick(position: Int)
+        fun onClick(user:User)
     }
 }

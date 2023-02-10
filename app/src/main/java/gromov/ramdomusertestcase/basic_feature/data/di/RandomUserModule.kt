@@ -8,6 +8,7 @@ import dagger.hilt.components.SingletonComponent
 import gromov.ramdomusertestcase.basic_feature.data.remote.api.UserApi
 import gromov.ramdomusertestcase.basic_feature.data.repository.UserRepositoryImpl
 import gromov.ramdomusertestcase.basic_feature.domain.repository.UserRepository
+import gromov.ramdomusertestcase.basic_feature.domain.usecase.GetDetailUserInfoUseCase
 import gromov.ramdomusertestcase.basic_feature.domain.usecase.GetRandomUsersUseCase
 import gromov.ramdomusertestcase.basic_feature.domain.usecase.GetUsersHistoryUseCase
 import gromov.ramdomusertestcase.basic_feature.domain.usecase.getRandomUsers
@@ -43,6 +44,13 @@ object RandomUserModule {
         return GetUsersHistoryUseCase {
             getUsersHistory(userRepository)
         }
+    }
+
+    @Provides
+    fun provideDetailUserInfoUseCase(
+        userRepository: UserRepository
+    ): GetDetailUserInfoUseCase {
+        return GetDetailUserInfoUseCase(userRepository)
     }
 
     @Module

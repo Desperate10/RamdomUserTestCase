@@ -4,6 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import gromov.ramdomusertestcase.app.database.AppDatabase
+import gromov.ramdomusertestcase.basic_feature.data.local.entity.UserDbModel
 import gromov.ramdomusertestcase.basic_feature.data.mapper.toDomainModel
 import gromov.ramdomusertestcase.basic_feature.data.mapper.toEntityModel
 import gromov.ramdomusertestcase.basic_feature.data.paging.UsersHistoryPagingSource
@@ -39,7 +40,8 @@ class UserRepositoryImpl @Inject constructor(
             }
     }
 
-    override suspend fun getUserDetails(id: String) {
-        TODO("Not yet implemented")
+    override suspend fun getUserDetails(id: String): User {
+        return db.userDao.getUser(id)
+            .toDomainModel()
     }
 }

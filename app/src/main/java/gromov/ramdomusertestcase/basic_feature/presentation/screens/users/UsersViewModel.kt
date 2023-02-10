@@ -18,10 +18,6 @@ class UsersViewModel @Inject constructor(
     private val _users = MutableStateFlow(RandomUsersUiState())
     val users: StateFlow<RandomUsersUiState> = _users
 
-    init {
-        getRandomUsers()
-    }
-
     fun getRandomUsers() {
         viewModelScope.launch {
             try {

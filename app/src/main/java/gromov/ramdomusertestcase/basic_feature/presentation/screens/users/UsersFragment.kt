@@ -1,6 +1,7 @@
 package gromov.ramdomusertestcase.basic_feature.presentation.screens.users
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
+import gromov.ramdomusertestcase.basic_feature.domain.model.User
 import gromov.ramdomusertestcase.basic_feature.presentation.screens.users.adapter.RandomUsersAdapter
 import gromov.ramdomusertestcase.core.extension.autoCleaned
 import gromov.ramdomusertestcase.core.extension.collectLifecycleFlow
@@ -62,14 +64,14 @@ class UsersFragment : Fragment(), RandomUsersAdapter.OnRandomUserClickListener {
         binding.swipeRefreshLayout.setOnRefreshListener { viewModel.getRandomUsers() }
     }
 
-    override fun onClick(position: Int) {
-        navigateToUserDetailScreen(position)
+    override fun onClick(user: User) {
+        navigateToUserDetailScreen(user.id)
     }
 
-    private fun navigateToUserDetailScreen(position: Int) {
+    private fun navigateToUserDetailScreen(userId: String) {
         findNavController().navigate(
             UsersFragmentDirections.actionUsersFragmentToUserDetailFragment(
-                position
+                userId
             )
         )
     }

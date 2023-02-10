@@ -10,15 +10,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
-import gromov.ramdomusertestcase.R
+import gromov.ramdomusertestcase.basic_feature.domain.model.User
 import gromov.ramdomusertestcase.basic_feature.presentation.screens.history.adapter.HistoryUsersAdapter
 import gromov.ramdomusertestcase.basic_feature.presentation.screens.users.UsersFragmentDirections
-import gromov.ramdomusertestcase.basic_feature.presentation.screens.users.UsersViewModel
-import gromov.ramdomusertestcase.basic_feature.presentation.screens.users.adapter.RandomUsersAdapter
 import gromov.ramdomusertestcase.core.extension.autoCleaned
 import gromov.ramdomusertestcase.core.extension.collectLifecycleFlow
 import gromov.ramdomusertestcase.databinding.FragmentHistoryBinding
-import gromov.ramdomusertestcase.databinding.FragmentUsersBinding
 
 @AndroidEntryPoint
 class HistoryFragment : Fragment() , HistoryUsersAdapter.OnRandomUserClickListener{
@@ -52,14 +49,14 @@ class HistoryFragment : Fragment() , HistoryUsersAdapter.OnRandomUserClickListen
         adapter.onRandomUserClickListener = this
     }
 
-    override fun onClick(position: Int) {
-        navigateToUserDetailScreen(position)
+    override fun onClick(user: User) {
+        navigateToUserDetailScreen(user.id)
     }
 
-    private fun navigateToUserDetailScreen(position: Int) {
+    private fun navigateToUserDetailScreen(userId: String) {
         findNavController().navigate(
-            UsersFragmentDirections.actionUsersFragmentToUserDetailFragment(
-                position
+            HistoryFragmentDirections.actionHistoryFragmentToUserDetailFragment(
+                userId
             )
         )
     }
