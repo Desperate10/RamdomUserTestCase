@@ -12,6 +12,7 @@ import gromov.ramdomusertestcase.basic_feature.data.remote.api.UserApi
 import gromov.ramdomusertestcase.basic_feature.domain.model.User
 import gromov.ramdomusertestcase.basic_feature.domain.repository.UserRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.asFlow
 import javax.inject.Inject
 
 class UserRepositoryImpl @Inject constructor(
