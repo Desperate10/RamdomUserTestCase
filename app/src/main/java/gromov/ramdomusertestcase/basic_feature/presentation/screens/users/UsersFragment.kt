@@ -46,7 +46,10 @@ class UsersFragment : Fragment(), RandomUsersAdapter.OnRandomUserClickListener {
                 binding.swipeRefreshLayout.isRefreshing = false
             } else {
                 binding.swipeRefreshLayout.isRefreshing = false
-                adapter.submitList(it.users)
+                if(it.users.isNotEmpty()) {
+                    binding.tvEmptyList.visibility = View.GONE
+                    adapter.submitList(it.users)
+                }
             }
         }
     }
