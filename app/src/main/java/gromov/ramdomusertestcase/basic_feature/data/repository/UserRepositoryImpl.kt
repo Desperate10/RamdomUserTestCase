@@ -9,6 +9,7 @@ import gromov.ramdomusertestcase.basic_feature.data.mapper.toDomainModel
 import gromov.ramdomusertestcase.basic_feature.data.mapper.toEntityModel
 import gromov.ramdomusertestcase.basic_feature.data.paging.UsersHistoryPagingSource
 import gromov.ramdomusertestcase.basic_feature.data.remote.api.UserApi
+import gromov.ramdomusertestcase.basic_feature.data.remote.api.UserApi.Companion.TWENTY_USERS
 import gromov.ramdomusertestcase.basic_feature.domain.model.User
 import gromov.ramdomusertestcase.basic_feature.domain.repository.UserRepository
 import kotlinx.coroutines.flow.Flow
@@ -22,7 +23,7 @@ class UserRepositoryImpl @Inject constructor(
 
     override fun getSavedUsers(): Flow<PagingData<User>> {
         return Pager(
-            config = PagingConfig(pageSize = 20),
+            config = PagingConfig(pageSize = TWENTY_USERS),
             pagingSourceFactory = {
                 UsersHistoryPagingSource(db)
             }

@@ -21,7 +21,7 @@ class RandomUsersAdapter : ListAdapter<UserDisplayable, RandomUserViewHolder>(Ra
     override fun onBindViewHolder(holder: RandomUserViewHolder, position: Int) {
         val user = getItem(position)
         with(holder.binding) {
-            tvName.text = user.name+ " "+ user.surname
+            tvName.text = "${user.name} ${user.surname}"//replace with resource string
             user.also {
                 Glide.with(ivUserPicture)
                     .load(it.photo)

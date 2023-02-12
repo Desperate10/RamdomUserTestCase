@@ -13,7 +13,7 @@ class UsersHistoryPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, User> {
         val currentPage = params.key ?: 0
         return try {
-            val users = usersDb.userDao.getSavedUsers(20, currentPage * 20)
+            val users = usersDb.userDao.getSavedUsers(TWENTY_USERS, currentPage * TWENTY_USERS)
             if (users.isNotEmpty()) {
                 LoadResult.Page(
                     data = users.map { it.toDomainModel() },
@@ -34,5 +34,9 @@ class UsersHistoryPagingSource(
 
     override fun getRefreshKey(state: PagingState<Int, User>): Int? {
         return state.anchorPosition
+    }
+
+    companion object {
+        const val TWENTY_USERS = 20
     }
 }

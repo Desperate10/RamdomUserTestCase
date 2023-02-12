@@ -6,6 +6,10 @@ import retrofit2.http.GET
 
 interface UserApi {
 
-    @GET("?results=20")
+    @GET("?results=$TWENTY_USERS")
     suspend fun getRandomUsers(): RandomUserResponse
+
+    companion object {
+        const val TWENTY_USERS = 20
+    }
 }
