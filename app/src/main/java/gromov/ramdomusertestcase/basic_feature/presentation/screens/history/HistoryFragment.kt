@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import gromov.ramdomusertestcase.basic_feature.domain.model.User
+import gromov.ramdomusertestcase.basic_feature.presentation.model.UserDisplayable
 import gromov.ramdomusertestcase.basic_feature.presentation.screens.history.adapter.HistoryUsersAdapter
 import gromov.ramdomusertestcase.basic_feature.presentation.screens.users.UsersFragmentDirections
 import gromov.ramdomusertestcase.core.extension.autoCleaned
@@ -65,7 +66,7 @@ class HistoryFragment : Fragment(), HistoryUsersAdapter.OnRandomUserClickListene
         adapter.onRandomUserClickListener = this
     }
 
-    override fun onClick(user: User) {
+    override fun onClick(user: UserDisplayable) {
         navigateToUserDetailScreen(user.id)
     }
 

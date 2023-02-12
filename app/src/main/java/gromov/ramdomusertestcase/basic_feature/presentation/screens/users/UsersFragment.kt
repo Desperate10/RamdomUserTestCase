@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import gromov.ramdomusertestcase.basic_feature.domain.model.User
+import gromov.ramdomusertestcase.basic_feature.presentation.model.UserDisplayable
 import gromov.ramdomusertestcase.basic_feature.presentation.screens.users.adapter.RandomUsersAdapter
 import gromov.ramdomusertestcase.core.extension.autoCleaned
 import gromov.ramdomusertestcase.core.extension.collectLifecycleFlow
@@ -67,7 +68,7 @@ class UsersFragment : Fragment(), RandomUsersAdapter.OnRandomUserClickListener {
         binding.swipeRefreshLayout.setOnRefreshListener { viewModel.getRandomUsers() }
     }
 
-    override fun onClick(user: User) {
+    override fun onClick(user: UserDisplayable) {
         navigateToUserDetailScreen(user.id)
     }
 

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import gromov.ramdomusertestcase.basic_feature.domain.usecase.GetRandomUsersUseCase
+import gromov.ramdomusertestcase.basic_feature.presentation.mapper.toPresentationModel
 import gromov.ramdomusertestcase.basic_feature.presentation.model.UserState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -22,8 +23,12 @@ class UsersViewModel @Inject constructor(
         viewModelScope.launch {
             _users.emit(UserState(isLoading = true))
             getRandomUsersUseCase()
-                .onSuccess {
-                    _users.emit(UserState(isLoading = false, users = it))
+                .onSuccess { users ->
+                    _users.emit(
+                        UserState(
+                            isLoading = false,
+                            users = users.map { it.toPresentationModel() })
+                    )
                 }
                 .onFailure {
                     _users.emit(UserState(isError = true))

@@ -1,9 +1,6 @@
-package gromov.ramdomusertestcase.basic_feature.domain.model
+package gromov.ramdomusertestcase.basic_feature.presentation.model
 
-import kotlinx.serialization.Serializable
-
-@Serializable
-data class User(
+data class UserDetailDisplayable(
     val id: String,
     val name: String,
     val surname: String,
@@ -12,4 +9,6 @@ data class User(
     val picture: String,
     val city: String,
     val country: String
-)
+) {
+    constructor() : this("","","","","","","","")
+}
