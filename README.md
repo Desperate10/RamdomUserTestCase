@@ -3,16 +3,15 @@ Fetch random persons and show detail info about them
 
 
 
-https://user-images.githubusercontent.com/25912592/218146689-2eb3fec2-fb7f-40d3-90c9-df12847cb370.mp4
+https://user-images.githubusercontent.com/25912592/218348871-44c4fe36-d6e4-4f1f-9cd4-f3d8368ee2db.mp4
 
 
+
+## Можно взять апк из папки release
 
 Ожидаемое время выполнения -20 часов
 Время выполнения - 14 часов
 
-В процессе:
-- обработка ошибок
-- resource sealed class
-- uistates
-- ui models + mapper
-- extension for coroutinehandler and dispatcher
+## Резюме
+
+ - [Click to watch](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
