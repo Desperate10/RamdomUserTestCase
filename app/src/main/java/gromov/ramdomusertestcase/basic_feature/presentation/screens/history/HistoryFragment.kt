@@ -42,6 +42,8 @@ class HistoryFragment : Fragment(), HistoryUsersAdapter.OnRandomUserClickListene
     }
 
     private fun observeViewModel() {
+        viewModel.getSavedUsers()
+
         collectLifecycleFlow(viewModel.users) { users ->
             adapter.submitData(users)
         }

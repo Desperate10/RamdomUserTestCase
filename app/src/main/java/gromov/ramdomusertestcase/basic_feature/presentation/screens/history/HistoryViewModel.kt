@@ -23,11 +23,7 @@ class HistoryViewModel @Inject constructor(
     private var _users = MutableStateFlow<PagingData<UserDisplayable>>(PagingData.empty())
     val users: StateFlow<PagingData<UserDisplayable>> = _users
 
-    init {
-        getSavedUsers()
-    }
-
-    private fun getSavedUsers() {
+    fun getSavedUsers() {
         viewModelScope.launch {
             getUsersHistoryUseCase()
                 .cachedIn(viewModelScope)
