@@ -12,16 +12,16 @@ import gromov.ramdomusertestcase.basic_feature.presentation.screens.users.adapte
 import gromov.ramdomusertestcase.basic_feature.presentation.screens.users.adapter.RandomUserViewHolder
 import gromov.ramdomusertestcase.databinding.ItemRandomUserBinding
 
-class HistoryUsersAdapter : PagingDataAdapter<UserDisplayable, RandomUserViewHolder>(RandomUserDiffUtil) {
+class HistoryUsersAdapter : PagingDataAdapter<UserDisplayable, HistoryUserViewHolder>(HistoryUserDiffUtil) {
 
     var onRandomUserClickListener: OnRandomUserClickListener? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RandomUserViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryUserViewHolder {
         val binding = ItemRandomUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return RandomUserViewHolder(binding)
+        return HistoryUserViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: RandomUserViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: HistoryUserViewHolder, position: Int) {
         val user = getItem(position)
         with(holder.binding) {
             tvName.text = user?.name +" "+user?.surname
