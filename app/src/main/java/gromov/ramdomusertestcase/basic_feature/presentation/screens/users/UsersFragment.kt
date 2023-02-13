@@ -10,12 +10,15 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import gromov.ramdomusertestcase.R
 import gromov.ramdomusertestcase.basic_feature.domain.model.User
 import gromov.ramdomusertestcase.basic_feature.presentation.model.UserDisplayable
 import gromov.ramdomusertestcase.basic_feature.presentation.screens.users.adapter.RandomUsersAdapter
 import gromov.ramdomusertestcase.core.extension.autoCleaned
 import gromov.ramdomusertestcase.core.extension.collectLifecycleFlow
+import gromov.ramdomusertestcase.core.extension.snackbar
 import gromov.ramdomusertestcase.databinding.FragmentUsersBinding
 
 @AndroidEntryPoint
@@ -44,6 +47,7 @@ class UsersFragment : Fragment(), RandomUsersAdapter.OnRandomUserClickListener {
             if (it.isLoading) {
                 binding.swipeRefreshLayout.isRefreshing = true
             } else if (it.isError) {
+                binding.root.snackbar(getString(R.string.error))
                 binding.swipeRefreshLayout.isRefreshing = false
             } else {
                 binding.swipeRefreshLayout.isRefreshing = false
