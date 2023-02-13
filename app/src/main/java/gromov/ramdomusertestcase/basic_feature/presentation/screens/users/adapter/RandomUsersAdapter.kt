@@ -6,9 +6,10 @@ import androidx.recyclerview.widget.ListAdapter
 import com.bumptech.glide.Glide
 import gromov.ramdomusertestcase.R
 import gromov.ramdomusertestcase.basic_feature.domain.model.User
+import gromov.ramdomusertestcase.basic_feature.presentation.model.UserDisplayable
 import gromov.ramdomusertestcase.databinding.ItemRandomUserBinding
 
-class RandomUsersAdapter : ListAdapter<User, RandomUserViewHolder>(RandomUserDiffUtil) {
+class RandomUsersAdapter : ListAdapter<UserDisplayable, RandomUserViewHolder>(RandomUserDiffUtil) {
 
     var onRandomUserClickListener: OnRandomUserClickListener? = null
 
@@ -20,10 +21,10 @@ class RandomUsersAdapter : ListAdapter<User, RandomUserViewHolder>(RandomUserDif
     override fun onBindViewHolder(holder: RandomUserViewHolder, position: Int) {
         val user = getItem(position)
         with(holder.binding) {
-            tvName.text = user.name+ " "+ user.surname
+            tvName.text = "${user.name} ${user.surname}"//replace with resource string
             user.also {
                 Glide.with(ivUserPicture)
-                    .load(it.picture)
+                    .load(it.photo)
                     .placeholder(R.drawable.ic_placeholder)
                     .into(ivUserPicture)
             }
@@ -36,6 +37,6 @@ class RandomUsersAdapter : ListAdapter<User, RandomUserViewHolder>(RandomUserDif
     }
 
     interface OnRandomUserClickListener {
-        fun onClick(user: User)
+        fun onClick(user: UserDisplayable)
     }
 }

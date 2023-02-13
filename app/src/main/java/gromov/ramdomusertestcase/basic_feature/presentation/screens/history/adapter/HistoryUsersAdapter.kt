@@ -7,11 +7,12 @@ import androidx.recyclerview.widget.ListAdapter
 import com.bumptech.glide.Glide
 import gromov.ramdomusertestcase.R
 import gromov.ramdomusertestcase.basic_feature.domain.model.User
+import gromov.ramdomusertestcase.basic_feature.presentation.model.UserDisplayable
 import gromov.ramdomusertestcase.basic_feature.presentation.screens.users.adapter.RandomUserDiffUtil
 import gromov.ramdomusertestcase.basic_feature.presentation.screens.users.adapter.RandomUserViewHolder
 import gromov.ramdomusertestcase.databinding.ItemRandomUserBinding
 
-class HistoryUsersAdapter : PagingDataAdapter<User, RandomUserViewHolder>(RandomUserDiffUtil) {
+class HistoryUsersAdapter : PagingDataAdapter<UserDisplayable, RandomUserViewHolder>(RandomUserDiffUtil) {
 
     var onRandomUserClickListener: OnRandomUserClickListener? = null
 
@@ -26,7 +27,7 @@ class HistoryUsersAdapter : PagingDataAdapter<User, RandomUserViewHolder>(Random
             tvName.text = user?.name +" "+user?.surname
             user.also {
                 Glide.with(ivUserPicture)
-                    .load(it?.picture)
+                    .load(it?.photo)
                     .placeholder(R.drawable.ic_placeholder)
                     .into(ivUserPicture)
             }
@@ -39,6 +40,6 @@ class HistoryUsersAdapter : PagingDataAdapter<User, RandomUserViewHolder>(Random
     }
 
     interface OnRandomUserClickListener {
-        fun onClick(user:User)
+        fun onClick(user: UserDisplayable)
     }
 }

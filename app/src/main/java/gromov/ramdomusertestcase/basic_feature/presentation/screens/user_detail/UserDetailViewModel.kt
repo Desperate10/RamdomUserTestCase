@@ -7,6 +7,10 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import gromov.ramdomusertestcase.basic_feature.domain.model.User
 import gromov.ramdomusertestcase.basic_feature.domain.usecase.GetDetailUserInfoUseCase
+import gromov.ramdomusertestcase.basic_feature.presentation.mapper.toDetailPresentationModel
+import gromov.ramdomusertestcase.basic_feature.presentation.mapper.toPresentationModel
+import gromov.ramdomusertestcase.basic_feature.presentation.model.UserDetailDisplayable
+import gromov.ramdomusertestcase.basic_feature.presentation.model.UserDisplayable
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -20,12 +24,13 @@ class UserDetailViewModel @Inject constructor(
 
     private val args by lazy { UserDetailFragmentArgs.fromSavedStateHandle(savedStateHandle) }
 
-    private val _user = MutableStateFlow(User())
-    val user: StateFlow<User> = _user
+    private val _user = MutableStateFlow(UserDetailDisplayable())
+    val user: StateFlow<UserDetailDisplayable> = _user
 
     init {
         viewModelScope.launch {
             _user.value = getDetailUserInfoUseCase(args.id)
+                .toDetailPresentationModel()
         }
 
     }
