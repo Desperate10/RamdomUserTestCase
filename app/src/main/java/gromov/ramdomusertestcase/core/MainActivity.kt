@@ -17,7 +17,8 @@ class MainActivity : AppCompatActivity() {
     private val delay = 2000L
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        installSplashScreen()
+
+        installSplashScreen().setKeepOnScreenCondition{ keepSplashOnScreen}
         Handler(Looper.getMainLooper()).postDelayed({ keepSplashOnScreen = false }, delay)
 
         val binding: ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
